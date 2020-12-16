@@ -28,7 +28,7 @@ public class GalleryService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<GalleryDto> getAllGallerys() {
+    public List<GalleryDto> getAllGalleries() {
         return galleryRepository.findAll().stream()
                 .map(gallery -> galleryDtoMapper.toDto(gallery))
                 .collect(Collectors.toList());
