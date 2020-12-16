@@ -1,5 +1,6 @@
 package com.itrepka.photogallery.config;
 
+import com.itrepka.photogallery.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -46,7 +47,7 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers(staticResources).permitAll()
-                .antMatchers("/**").permitAll()
+                .antMatchers("/**").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
