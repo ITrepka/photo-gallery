@@ -18,9 +18,9 @@ public class Gallery {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer galleryId;
     private String name;
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<Photo> photos = new ArrayList<>();
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private User user;
     private OffsetDateTime createdAt;
     private OffsetDateTime updatedAt;

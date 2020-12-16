@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Builder
@@ -18,8 +19,8 @@ public class User {
     private Integer userId;
     private String login;
     private String password;
-    @OneToMany
-    private List<Gallery> userGalleries;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Gallery> userGalleries = new ArrayList<>();
     private Role role;
     private OffsetDateTime createdAt;
     private OffsetDateTime updatedAt;

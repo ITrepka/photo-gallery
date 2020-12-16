@@ -17,7 +17,7 @@ public class Photo {
     private Integer photoId;
     private String url;
     private String name;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Gallery gallery;
     private OffsetDateTime createdAt;
     private OffsetDateTime updatedAt;
