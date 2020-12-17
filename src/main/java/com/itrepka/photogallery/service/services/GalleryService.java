@@ -57,7 +57,7 @@ public class GalleryService {
         gallery.setUser(user);
         Gallery savedGallery = galleryRepository.save(gallery);
         //todo check is gallery added to user already
-        user.getUserGalleries().add(savedGallery);
+        user.setGallery(savedGallery);
         userRepository.save(user);
 
         return galleryDtoMapper.toDto(savedGallery);
