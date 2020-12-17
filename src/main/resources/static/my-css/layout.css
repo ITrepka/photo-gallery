@@ -1,3 +1,18 @@
 body {
     font-family: 'Lato', sans-serif;
 }
+
+footer {
+    width: 100%;
+    display: table;
+    text-align: center;
+    height: 5vh;
+    background-color: #082d42;
+    color: #fff;
+    opacity: 0.8;
+}
+
+footer p {
+    display: table-cell;
+    vertical-align: middle;
+}
