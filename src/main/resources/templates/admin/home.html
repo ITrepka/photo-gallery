@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link th:replace="layout :: head">
+    <link rel="stylesheet" href="/my-css/admin-home.css" type="text/css" media="all"/>
 </head>
 <body>
-    Siemasz Admin
+<div class="container">
+    <div class="row">
+        <div class="col-2 offset-10"><a class="btn logout" th:href="@{/logout}">Log Out</a></div>
+    </div>
+    <h1 style="text-align: center">This is your client list</h1>
+    <div class="row">
+        <div class="col-md-3 offset-md-2"><a th:href="@{/admin/add-user}" class="btn new">Add New</a></div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="scrollable">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr class="table-head">
+                        <th>Created At</th>
+                        <th>Client ID</th>
+                        <th>Username</th>
+                        <th>Action</th>
+                        <th>Photos</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="client: ${clients}" th:classappend="${clients.indexOf(client) % 2 == 0 ? 'white-bg' : 'gray-bg'}">
+                        <td th:text="${client.getCreatedAt().toLocalDate()}"></td>
+                        <td th:text="${client.getId()}"></td>
+                        <td th:text="${client.getLogin()}"></td>
+                        <td>
+                            <a th:href="@{'/admin/edit-user/' + ${client.getId()}}" class="btn">Edit</a> |
+                            <a th:href="@{'/admin/remove-user/' + ${client.getId()}}" class="btn">Remove</a>
+                        </td>
+                        <td><a th:href="@{'/admin/gallery/' + ${client.getId()}}" class="btn">Gallery</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--    <table>-->
+    <!--        <thead>-->
+    <!--        <tr class="table-head">-->
+    <!--            <th>Created At</th>-->
+    <!--            <th>Client ID</th>-->
+    <!--            <th>Username</th>-->
+    <!--            <th>Edit</th>-->
+    <!--            <th>Action</th>-->
+    <!--            <th>Gallery</th>-->
+    <!--        </tr>-->
+    <!--        </thead>-->
+    <!--        <tbody>-->
+    <!--        <tr></tr>-->
+    <!--        </tbody>-->
+    <!--    </table>-->
+</div>
+<div th:replace="layout :: body"></div>
 </body>
 </html>

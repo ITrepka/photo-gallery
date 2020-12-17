@@ -1,0 +1,47 @@
+body {
+    font-size: 1rem;
+    min-height: 100vh;
+    align-items: center;
+    background: linear-gradient(45deg, #004d73, #54a6c2);
+}
+
+tr {
+    vertical-align: middle;
+    text-align: center;
+}
+
+h1{
+    margin-bottom: 5vh;
+}
+
+.container {
+    min-height: 100vh;
+    padding-top: 10vh;
+}
+
+.table-head {
+    height: 60px;
+    background: #082d42;
+    color: white;
+}
+
+.scrollable {
+    max-height: 70vh;
+    overflow: scroll;
+}
+
+.gray-bg {
+    background-color: #9BA6A9;
+}
+
+.white-bg {
+   background-color: white;
+}
+
+.logout {
+    background-color: white;
+}
+
+.new {
+    background-color: lightseagreen;
+}

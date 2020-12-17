@@ -46,9 +46,11 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable() //tymczasowe wylaczenie zabezpeczenia przed csrf
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
+//                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/admin/**").permitAll()
                 .antMatchers(staticResources).permitAll()
-                .antMatchers("/**").hasAnyRole("USER", "ADMIN")
+//                .antMatchers("/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
