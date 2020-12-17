@@ -3,9 +3,11 @@ package com.itrepka.photogallery.service.services;
 import com.itrepka.photogallery.model.Role;
 import com.itrepka.photogallery.model.User;
 import com.itrepka.photogallery.repository.UserRepository;
+import com.itrepka.photogallery.service.dto.CreateGalleryDto;
 import com.itrepka.photogallery.service.dto.CreateUserDto;
 import com.itrepka.photogallery.service.dto.UpdateUserDto;
 import com.itrepka.photogallery.service.dto.UserDto;
+import com.itrepka.photogallery.service.exception.GalleryInvalidDataException;
 import com.itrepka.photogallery.service.exception.UserAlreadyExistsException;
 import com.itrepka.photogallery.service.exception.UserInvalidDataException;
 import com.itrepka.photogallery.service.exception.UserNotFoundException;
@@ -24,7 +26,8 @@ public class UserService {
     private UserRepository userRepository;
     @Autowired
     private UserDtoMapper userDtoMapper;
-
+    @Autowired
+    private GalleryService galleryService;
 
     public List<UserDto> getAllUsers() {
         return userRepository.findAll().stream()
@@ -39,7 +42,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserDto addNewUser(CreateUserDto createUserDto) throws UserInvalidDataException, UserAlreadyExistsException {
+    public UserDto addNewUser(CreateUserDto createUserDto) throws UserInvalidDataException, UserAlreadyExistsException, UserNotFoundException, GalleryInvalidDataException {
         validateCreatingUser(createUserDto);
 
         User user = userDtoMapper.toModel(createUserDto);
@@ -47,6 +50,9 @@ public class UserService {
         user.setRole(Role.USER);
         user.setCreatedAt(OffsetDateTime.now());
         User savedUser = userRepository.save(user);
+        //todo, check is gallery added to user
+        CreateGalleryDto createGalleryDto = new CreateGalleryDto(user.getLogin() + "-gallery", savedUser.getUserId());
+        galleryService.addNewGallery(createGalleryDto);
 
         return userDtoMapper.toDto(savedUser);
     }

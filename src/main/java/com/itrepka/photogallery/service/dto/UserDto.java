@@ -16,7 +16,7 @@ public class UserDto {
     private Integer id;
     private String login;
     private String role;
-    private List<Integer> galleriesIds;
+    private Integer galleryId;
     private OffsetDateTime createdAt;
     private OffsetDateTime updatedAt;
 }

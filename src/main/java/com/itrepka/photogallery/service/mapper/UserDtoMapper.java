@@ -13,18 +13,15 @@ import java.util.stream.Collectors;
 public class UserDtoMapper {
 
     public UserDto toDto(User user) {
-        List<Integer> userGalleriesIds = user.getUserGalleries() == null ? null : user.getUserGalleries().stream()
-                .map(Gallery::getGalleryId)
-                .collect(Collectors.toList());
+        Integer galleryId = user.getGallery() == null ? null : user.getGallery().getGalleryId();
         return UserDto.builder()
                 .id(user.getUserId())
                 .createdAt(user.getCreatedAt())
                 .updatedAt(user.getUpdatedAt())
                 .login(user.getLogin())
                 .role(user.getRole().name())
-                .galleriesIds(userGalleriesIds)
+                .galleryId(galleryId)
                 .build();
-
     }
 
     public User toModel(CreateUserDto createUserDto) {
@@ -33,7 +30,7 @@ public class UserDtoMapper {
                 .login(createUserDto.getLogin())
                 .password(null)
                 .role(null)
-                .userGalleries(null)
+                .gallery(null)
                 .build();
     }
 }

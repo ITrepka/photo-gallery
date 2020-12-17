@@ -20,7 +20,7 @@ public class Gallery {
     private String name;
     @OneToMany(cascade = {CascadeType.ALL})
     private List<Photo> photos = new ArrayList<>();
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private User user;
     private OffsetDateTime createdAt;
     private OffsetDateTime updatedAt;

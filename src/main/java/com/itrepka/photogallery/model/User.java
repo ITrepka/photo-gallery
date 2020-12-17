@@ -19,8 +19,8 @@ public class User {
     private Integer userId;
     private String login;
     private String password;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Gallery> userGalleries = new ArrayList<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    private Gallery gallery;
     private Role role;
     private OffsetDateTime createdAt;
     private OffsetDateTime updatedAt;
