@@ -3,15 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:replace="layout :: head">
+    <link rel="stylesheet" href="my-css/login-page.css" type="text/css" media="all"/>
 </head>
 <body>
-    TUtaj strona logowania
-    <form th:action="@{/login}" method="post">
-        <label for="username">Login</label>
-        <input type="text" name="username" id="username"/>
-        <label for="password">Hasło</label>
-        <input type="password" name="password" id="password"/>
-        <button type="submit" name="login"><b>Zaloguj się</b></button>
-    </form>
+<section>
+    <div class="container">
+        <div class="row ceil"></div>
+        <div class="row">
+        </div>
+        <div class="row">
+            <div class="col-md-4 offset-md-4 col-8 offset-2 content">
+                <hr>
+                <form th:action="@{/login}" method="post">
+                    <label for="username">Login</label>
+                    <input type="text" name="username" id="username"/>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password"/>
+                    <button type="submit" name="login"><b>Sign In</b></button>
+                </form>
+            </div>
+        </div>
+        <div class="row floor"></div>
+    </div>
+</section>
+
+<!-- bootstrap script !-->
+<div th:replace="layout :: body"></div>
 </body>
 </html>

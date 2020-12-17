@@ -33,6 +33,7 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
     }
 
     private String[] staticResources = {
+            "/my-css/**",
             "/css/**",
             "/img/**",
             "/js/**",
