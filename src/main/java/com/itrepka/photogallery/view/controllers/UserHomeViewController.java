@@ -6,7 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class UserHomeViewController {
-    @GetMapping("home")
+    @GetMapping("/home")
     public ModelAndView displayAdminHome() {
         return new ModelAndView("home");
     }

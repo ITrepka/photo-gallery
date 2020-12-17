@@ -5,6 +5,10 @@ body {
     background: linear-gradient(45deg, #004d73, #54a6c2);
 }
 
+h1 {
+    text-align: center;
+}
+
 tr {
     vertical-align: middle;
     text-align: center;

@@ -1,9 +1,14 @@
 body {
-    background: url(/img/login-page-background.jpg) no-repeat center center fixed;
-    background-size: cover;
-    height: 100vh;
+    font-size: 1rem;
+    min-height: 100vh;
+    align-items: center;
+    background: linear-gradient(45deg, #004d73, #54a6c2);
 }
 
+.container {
+    min-height: 100vh;
+    padding-top: 10vh;
+}
 form {
     display: block;
 }
@@ -57,12 +62,4 @@ h1 {
     border: 1px solid #082d42;
     border-radius: 3%;
     padding: 4% 5% 2% 5%;
-}
-
-.ceil {
-    height: 30vh;
-}
-
-.floor {
-    height: 33vh;
 }
