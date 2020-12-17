@@ -27,8 +27,8 @@ public class EditUserViewController {
     }
 
     @PostMapping("/admin/edit-user/{id}")
-    public ModelAndView updateUserPassword(@PathVariable Integer id, @RequestBody UpdateUserDto updateUserDto) throws UserInvalidDataException, UserNotFoundException {
+    public ModelAndView updateUserPassword(@PathVariable Integer id, @ModelAttribute(name = "updateUser") UpdateUserDto updateUserDto) throws UserInvalidDataException, UserNotFoundException {
         UserDto userDto = userService.updateUser(id, updateUserDto);
-        return new ModelAndView("/admin/home?edited="+userDto.getLogin());
+        return new ModelAndView("redirect:/admin/home");
     }
 }
