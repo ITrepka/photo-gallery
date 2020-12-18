@@ -67,7 +67,7 @@ public class UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("Not found user with id = " + id));
 
-        user.setPassword(updateUserDto.getPassword()); //todo encoder
+        user.setPassword(passwordEncoder.encode(updateUserDto.getPassword()));
         user.setUpdatedAt(OffsetDateTime.now());
         User updatedUser = userRepository.save(user);
 

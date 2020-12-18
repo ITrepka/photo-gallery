@@ -42,7 +42,6 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
             "/scss/**"
     };
 
-    //todo filters for users and redirects to their galleries
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable() //tymczasowe wylaczenie zabezpeczenia przed csrf
