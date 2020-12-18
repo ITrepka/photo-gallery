@@ -56,7 +56,7 @@ public class GalleryService {
                 .orElseThrow(() -> new UserNotFoundException("Not found user with id = " + userId));
         gallery.setUser(user);
         Gallery savedGallery = galleryRepository.save(gallery);
-        //todo check is gallery added to user already
+        //adding gallery to user
         user.setGallery(savedGallery);
         userRepository.save(user);
 

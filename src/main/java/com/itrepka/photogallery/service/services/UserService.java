@@ -13,6 +13,7 @@ import com.itrepka.photogallery.service.exception.UserInvalidDataException;
 import com.itrepka.photogallery.service.exception.UserNotFoundException;
 import com.itrepka.photogallery.service.mapper.UserDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -28,6 +29,8 @@ public class UserService {
     private UserDtoMapper userDtoMapper;
     @Autowired
     private GalleryService galleryService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public List<UserDto> getAllUsers() {
         return userRepository.findAll().stream()
@@ -46,11 +49,11 @@ public class UserService {
         validateCreatingUser(createUserDto);
 
         User user = userDtoMapper.toModel(createUserDto);
-        user.setPassword(createUserDto.getPassword()); //todo encoder
+        user.setPassword(passwordEncoder.encode(createUserDto.getPassword()));
         user.setRole(Role.USER);
         user.setCreatedAt(OffsetDateTime.now());
         User savedUser = userRepository.save(user);
-        //todo, check is gallery added to user
+        //new gallery for user
         CreateGalleryDto createGalleryDto = new CreateGalleryDto(user.getLogin() + "-gallery", savedUser.getUserId());
         galleryService.addNewGallery(createGalleryDto);
 

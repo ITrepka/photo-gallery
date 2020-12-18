@@ -60,7 +60,6 @@ public class PhotoService {
         Photo savedPhoto = photoRepository.save(photo);
         gallery.getPhotos().add(photo);
         galleryRepository.save(gallery);
-        //todo check is photo added to gallery too
 
         return photoDtoMapper.toDto(savedPhoto);
     }
