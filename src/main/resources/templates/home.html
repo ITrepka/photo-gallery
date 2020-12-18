@@ -10,7 +10,7 @@
         <div class="col-4 offset-8 col-sm-3 offset-sm-9 col-md-2 offset-md-10 col-xl-1 offset-xl-11">
             <a class="btn logout" th:href="@{/logout}">Log Out</a></div>
     </div>
-    <h1>Gallery</h1>
+    <h1 th:text="${galleryName}"></h1>
     <hr>
     <div class="row">
         <div th:each="photo : ${photos}" class="col-lg-3 col-md-4 col-xs-6 thumb relative">

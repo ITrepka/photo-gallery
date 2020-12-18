@@ -1,5 +1,6 @@
 package com.itrepka.photogallery.view.service;
 
+import com.itrepka.photogallery.config.AuthenticationSystem;
 import com.itrepka.photogallery.model.Photo;
 import com.itrepka.photogallery.service.dto.*;
 import com.itrepka.photogallery.service.exception.GalleryNotFoundException;
@@ -29,6 +30,8 @@ public class AdminOperationsService {
     private PhotoService photoService;
     @Autowired
     private GalleryService galleryService;
+    @Autowired
+    private AuthenticationSystem authenticationSystem;
 
     public List<UserDto> getClientListToDisplay() {
         return userService.getAllUsers().stream()
@@ -75,5 +78,10 @@ public class AdminOperationsService {
         Path path = Paths.get(AdminGalleryViewController.uploadDirectory + "/" + user.getLogin() + "/" + photo.getName());
         Files.delete(path);
         photoService.deletePhotoById(id);
+    }
+
+    public UserDto getMeAsUserDto() throws UserNotFoundException {
+        String login = authenticationSystem.getName();
+        return userService.getUserByLogin(login);
     }
 }

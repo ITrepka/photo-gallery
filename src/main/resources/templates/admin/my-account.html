@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:replace="layout :: head">
+    <link rel="stylesheet" href="/my-css/admin-home.css" type="text/css" media="all"/>
+</head>
+<body>
+<div class="container">
+    <h1>Update Password</h1>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr class="table-head">
+                        <th>Client ID</th>
+                        <th>Username</th>
+                        <th>New Password</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="white-bg">
+                        <td th:text="${userDto.getId()}"></td>
+                        <td th:text="${userDto.getLogin()}"></td>
+                        <form th:action="@{'/admin/my-account'}" th:object="${updateMe}" method="post">
+                            <td>
+                                <input type="password" th:field="*{password}">
+                            </td>
+                            <td>
+                                <button type="submit">Update</button>
+                            </td>
+                        </form>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="layout :: body"></div>
+</body>
+</html>

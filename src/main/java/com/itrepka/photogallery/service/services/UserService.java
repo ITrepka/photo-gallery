@@ -103,4 +103,10 @@ public class UserService {
             throw new UserAlreadyExistsException("Already exists user with login: " + login);
         }
     }
+
+    public UserDto getUserByLogin(String login) throws UserNotFoundException {
+        return userRepository.findByLogin(login)
+                .map(user -> userDtoMapper.toDto(user))
+                .orElseThrow(() -> new UserNotFoundException("Not found user with login = " + login));
+    }
 }

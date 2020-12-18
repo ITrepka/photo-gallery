@@ -65,3 +65,13 @@ h1{
 .lghtgr:hover {
     color: lightseagreen;
 }
+
+.my-acc {
+    background-color: #9BA6A9;
+    text-align: right;
+}
+
+.my-acc:hover {
+    background-color: white;
+    color: lightseagreen;
+}
