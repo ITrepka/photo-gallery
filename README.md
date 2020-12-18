@@ -4,4 +4,6 @@ Aby aplikacja uruchomiła się prawidłowo, pobierz zipa z projektem, wypakuj u 
 Przed uruchomieniem aplikacji stwórz bazę danych w MySql Workbench poleceniem: create database photo_gallery_db; <br>
 W klasie UserService znajduje się metoda init() z adnotacją PostConstruct, którą należy zakomentować lub usunąć po pierwszym uruchomieniu. Tworzy ona domyślnego Admina:<br>
 -login: admin<br>
--hasło: admin
+-hasło: admin<br>
+Połączenie z bazą danych należy skonfigurować w pliku application.properties.<br>
+domyślnie login: root, hasło: root.<br>
