@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.servlet.http.HttpServletResponse;
+
 @Configuration
 @EnableWebSecurity
 public class AppConfig extends WebSecurityConfigurerAdapter {
@@ -57,6 +59,9 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .permitAll()
                 .and()
-                .logout();
+                .logout()
+                .permitAll()
+                .logoutSuccessHandler(((httpServletRequest, httpServletResponse, authentication) -> {httpServletResponse.setStatus(HttpServletResponse.SC_OK);}))
+                .and();
     }
 }

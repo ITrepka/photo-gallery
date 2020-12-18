@@ -1,6 +1,7 @@
 package com.itrepka.photogallery.view.service;
 
 import com.itrepka.photogallery.config.AuthenticationSystem;
+import com.itrepka.photogallery.model.Role;
 import com.itrepka.photogallery.model.User;
 import com.itrepka.photogallery.repository.UserRepository;
 import com.itrepka.photogallery.service.dto.GalleryDto;
@@ -57,5 +58,12 @@ public class UserOperationsService {
         GalleryDto galleryDto = galleryService.getGalleryById(galleryId);
 
         return galleryDto.getName();
+    }
+
+    public boolean isAdminLoggedIn() throws UserNotFoundException {
+        String name = authenticationSystem.getName();
+        User user = userRepository.findByLogin(name)
+                .orElseThrow(() -> new UserNotFoundException("Not found user with login = " + name));
+        return user.getRole().equals(Role.ADMIN);
     }
 }

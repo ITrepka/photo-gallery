@@ -19,11 +19,16 @@ public class UserHomeViewController {
 
     @GetMapping("/home")
     public ModelAndView displayAdminHome() throws UserNotFoundException, GalleryNotFoundException, PhotoNotFoundException {
-        List<PhotoDto> photos = userOperationsService.getPhotos();
-        String galleryName = userOperationsService.getGalleryName();
-        ModelAndView mv = new ModelAndView("home");
-        mv.addObject("photos", photos);
-        mv.addObject("galleryName", galleryName);
+        ModelAndView mv;
+        if (userOperationsService.isAdminLoggedIn()) {
+            mv = new ModelAndView("redirect:/admin/home");
+        } else {
+            List<PhotoDto> photos = userOperationsService.getPhotos();
+            String galleryName = userOperationsService.getGalleryName();
+            mv = new ModelAndView("/home");
+            mv.addObject("photos", photos);
+            mv.addObject("galleryName", galleryName);
+        }
         return mv;
     }
 }
