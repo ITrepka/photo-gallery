@@ -9,8 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginViewController {
     @GetMapping({"/login"})
     public ModelAndView displayHomepage() {
-        ModelAndView mv = new ModelAndView("login");
-        return mv;
+        return new ModelAndView("login");
     }
 
 }

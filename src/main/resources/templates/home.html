@@ -14,7 +14,6 @@
     <hr>
     <div class="row">
         <div th:each="photo : ${photos}" class="col-lg-3 col-md-4 col-xs-6 thumb relative">
-            <a th:href="'/admin/delete-photo/' + ${photo.getPhotoId()}" class="delete">X</a>
             <a th:href="${photo.getPath()}"
                class="fancybox" rel="ligthbox">
                 <img th:src="${photo.getPath()}"

@@ -11,15 +11,11 @@ import com.itrepka.photogallery.service.exception.PhotoNotFoundException;
 import com.itrepka.photogallery.service.exception.UserNotFoundException;
 import com.itrepka.photogallery.service.services.GalleryService;
 import com.itrepka.photogallery.service.services.PhotoService;
-import com.itrepka.photogallery.view.controllers.AdminGalleryViewController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
 
 @Service
 public class UserOperationsService {

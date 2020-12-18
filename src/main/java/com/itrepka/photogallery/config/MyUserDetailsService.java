@@ -29,5 +29,4 @@ public class MyUserDetailsService implements UserDetailsService {
                 .roles(role)
                 .build();
     }
-
 }

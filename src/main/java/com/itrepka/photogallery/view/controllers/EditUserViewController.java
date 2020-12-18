@@ -5,7 +5,6 @@ import com.itrepka.photogallery.service.dto.UserDto;
 import com.itrepka.photogallery.service.exception.UserInvalidDataException;
 import com.itrepka.photogallery.service.exception.UserNotFoundException;
 import com.itrepka.photogallery.service.services.UserService;
-import com.itrepka.photogallery.view.service.AdminOperationsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

@@ -4,8 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Builder
 @NoArgsConstructor
@@ -17,6 +15,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer userId;
+    @Column(unique = true)
     private String login;
     private String password;
     @OneToOne(cascade = CascadeType.ALL)

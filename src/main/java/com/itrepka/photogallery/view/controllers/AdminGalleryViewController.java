@@ -36,7 +36,6 @@ public class AdminGalleryViewController {
     private UserService userService;
     @Autowired
     private AdminOperationsService adminOperationsService;
-    public static String uploadDirectory = System.getProperty("user.dir") + "/src/main/resources/static/uploads";
 
 
     @GetMapping("/admin/gallery/{id}")
@@ -46,25 +45,13 @@ public class AdminGalleryViewController {
         ModelAndView mv = new ModelAndView("/admin/gallery");
         mv.addObject("userId" , id);
         mv.addObject("photos", photos);
-        System.out.println(photos);
         return mv;
     }
 
     @PostMapping("/admin/gallery/{userId}")
     public String upload(@PathVariable Integer userId, Model model, @RequestParam("files") MultipartFile[] files) throws UserNotFoundException, PhotoInvalidDataException, GalleryNotFoundException {
         UserDto userDto = userService.getUserById(userId);
-        new File(uploadDirectory + "/" + userDto.getLogin()).mkdir();
-        for (MultipartFile file : files) {
-            String fileName = file.getOriginalFilename();
-            String imagePath = "/uploads/" + userDto.getLogin() + "/" + fileName;
-            Path fileNameAndPath = Paths.get(uploadDirectory + "/" + userDto.getLogin(), fileName);
-            try {
-                Files.write(fileNameAndPath, file.getBytes());
-                adminOperationsService.addPhotoToDb(imagePath, fileName, userId);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        adminOperationsService.addPhotoToAppAndToDb(files, userDto);
         return "redirect:/admin/gallery/" + userId;
     }
 }

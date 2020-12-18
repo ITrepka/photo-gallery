@@ -95,11 +95,11 @@ public class UserService {
         String password = createUserDto.getPassword();
         String login = createUserDto.getLogin();
 
-        if (login == null || login.isEmpty() || password == null || password.isEmpty()){
+        if (login == null || login.isEmpty() || password == null || password.isEmpty()) {
             throw new UserInvalidDataException("Invalid login or password");
         }
 
-        if (getAllUsers().stream().anyMatch(userDto -> userDto.getLogin().equalsIgnoreCase(login))){
+        if (getAllUsers().stream().anyMatch(userDto -> userDto.getLogin().equalsIgnoreCase(login))) {
             throw new UserAlreadyExistsException("Already exists user with login: " + login);
         }
     }

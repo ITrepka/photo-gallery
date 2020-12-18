@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserDtoMapper {
-
     public UserDto toDto(User user) {
         Integer galleryId = user.getGallery() == null ? null : user.getGallery().getGalleryId();
         return UserDto.builder()
