@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -31,6 +32,12 @@ public class UserService {
     private GalleryService galleryService;
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @PostConstruct
+    public void init() {
+        userRepository.save(new User(1, "admin", passwordEncoder.encode("admin"),
+                null, Role.ADMIN, OffsetDateTime.now(), null));
+    }
 
     public List<UserDto> getAllUsers() {
         return userRepository.findAll().stream()
