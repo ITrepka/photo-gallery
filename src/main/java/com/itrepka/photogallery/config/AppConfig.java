@@ -61,7 +61,9 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll()
-                .logoutSuccessHandler(((httpServletRequest, httpServletResponse, authentication) -> {httpServletResponse.setStatus(HttpServletResponse.SC_OK);}))
+                .logoutSuccessHandler(((httpServletRequest, httpServletResponse, authentication) ->
+                {httpServletResponse.setStatus(HttpServletResponse.SC_OK);
+                httpServletResponse.sendRedirect("/login");}))
                 .and();
     }
 }

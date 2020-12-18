@@ -2,6 +2,7 @@ package com.itrepka.photogallery.view.controllers;
 
 import com.itrepka.photogallery.service.dto.UserDto;
 import com.itrepka.photogallery.view.service.AdminOperationsService;
+import com.itrepka.photogallery.view.service.UserOperationsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
