@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:replace="layout :: head">
+    <link rel="stylesheet" href="/my-css/gallery.css" type="text/css" media="all"/>
+    <script type="text/javascript">
+        function submitForm() {
+            document.getElementById("imagesForm").submit();
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/fc6fc213ca.js" crossorigin="anonymous"></script>
+    <STYLE>
+
+    </STYLE>
+</head>
+<body>
+<!--<form th:action="'/admin/gallery/' + ${userId}" method="post" enctype="multipart/form-data">-->
+<!--    <input type="file" accept=".jpg,.jpeg,.png" name="files" id="fileName2" onchange="validateFileType()" multiple>-->
+<!--    <input type="submit" value="Upload Files">-->
+<!--</form>-->
+<!-- Page Content -->
+<div class="container page-top">
+    <div class="row">
+        <div class="col-1"><a class="btn home" href="/admin/home">Home</a></div>
+        <div class="col-1 offset-10"><a class="btn logout" th:href="@{/logout}">Log Out</a></div>
+    </div>
+    <h1>Gallery</h1>
+    <hr>
+    <div class="row">
+        <div class="add-file col-lg-3 col-md-4 col-xs-6 thumb bg-plus">
+            <a class="fancybox" rel="ligthbox">
+            <form id="imagesForm" th:action="'/admin/gallery/' + ${userId}" method="post" enctype="multipart/form-data">
+                <input type="file" accept=".jpg,.jpeg,.png" name="files" id="fileName" onchange="submitForm()" multiple>
+            </form>
+            </a>
+        </div>
+        <div th:each="photo : ${photos}" class="col-lg-3 col-md-4 col-xs-6 thumb relative">
+            <a th:href="'/admin/delete-photo/' + ${photo.getPhotoId()}" class="delete">X</a>
+            <a th:href="${photo.getPath()}"
+               class="fancybox" rel="ligthbox">
+                <img th:src="${photo.getPath()}"
+                     class="zoom img-fluid" alt="">
+            </a>
+        </div>
+    </div>
+
+
+</div>
+<div th:replace="layout :: body"></div>
+</body>
+</html>

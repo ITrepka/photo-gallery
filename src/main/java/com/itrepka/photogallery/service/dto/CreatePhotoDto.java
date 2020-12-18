@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class CreatePhotoDto {
-    private String url;
+    private String path;
     private String name;
     private Integer galleryId;
 }

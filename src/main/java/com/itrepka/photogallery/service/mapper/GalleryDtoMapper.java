@@ -14,7 +14,7 @@ public class GalleryDtoMapper {
     public GalleryDto toDto(Gallery gallery) {
         List<Integer> photosIds = gallery.getPhotos() == null ? null : gallery.getPhotos().stream().map(Photo::getPhotoId)
                 .collect(Collectors.toList());
-
+        System.out.println(photosIds);
         Integer userId = gallery.getUser() == null ? null : gallery.getUser().getUserId();
 
         return GalleryDto.builder()

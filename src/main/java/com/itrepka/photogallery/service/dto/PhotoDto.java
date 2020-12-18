@@ -13,7 +13,7 @@ import java.time.OffsetDateTime;
 @Data
 public class PhotoDto {
     private Integer photoId;
-    private String url;
+    private String path;
     private String name;
     private Integer galleryId;
     private OffsetDateTime createdAt;

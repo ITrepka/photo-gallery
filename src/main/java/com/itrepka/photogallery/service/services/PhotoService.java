@@ -58,6 +58,8 @@ public class PhotoService {
         photo.setGallery(gallery);
 
         Photo savedPhoto = photoRepository.save(photo);
+        gallery.getPhotos().add(photo);
+        galleryRepository.save(gallery);
         //todo check is photo added to gallery too
 
         return photoDtoMapper.toDto(savedPhoto);
@@ -77,10 +79,16 @@ public class PhotoService {
     }
 
     @Transactional
-    public PhotoDto deletePhotoById(int id) throws PhotoNotFoundException {
+    public PhotoDto deletePhotoById(int id) throws PhotoNotFoundException, GalleryNotFoundException {
         Photo photo = photoRepository.findById(id)
                 .orElseThrow(() -> new PhotoNotFoundException("Not found photo with id = " + id));
 
+        Integer galleryId = photo.getGallery().getGalleryId();
+
+        Gallery gallery = galleryRepository.findById(galleryId)
+                .orElseThrow(() -> new GalleryNotFoundException("Not found gallery with id = " + galleryId));
+        gallery.getPhotos().remove(photo);
+        galleryRepository.save(gallery);
         photoRepository.deleteById(id);
 
         return photoDtoMapper.toDto(photo);

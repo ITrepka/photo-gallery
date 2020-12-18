@@ -18,7 +18,7 @@ public class Gallery {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer galleryId;
     private String name;
-    @OneToMany(cascade = {CascadeType.ALL})
+    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private List<Photo> photos = new ArrayList<>();
     @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private User user;
