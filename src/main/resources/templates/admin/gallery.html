@@ -14,15 +14,10 @@
     </STYLE>
 </head>
 <body>
-<!--<form th:action="'/admin/gallery/' + ${userId}" method="post" enctype="multipart/form-data">-->
-<!--    <input type="file" accept=".jpg,.jpeg,.png" name="files" id="fileName2" onchange="validateFileType()" multiple>-->
-<!--    <input type="submit" value="Upload Files">-->
-<!--</form>-->
-<!-- Page Content -->
 <div class="container page-top">
     <div class="row">
-        <div class="col-1"><a class="btn home" href="/admin/home">Home</a></div>
-        <div class="col-1 offset-10"><a class="btn logout" th:href="@{/logout}">Log Out</a></div>
+        <div class="col-1"><a class="btn home" href="/admin/home"><i class="fa fa-home"></i> </a></div>
+        <div class="col-4 offset-7 col-sm-3 offset-sm-8 col-md-2 offset-md-9 col-xl-1 offset-xl-10"><a class="btn logout" th:href="@{/logout}">Log Out</a></div>
     </div>
     <h1>Gallery</h1>
     <hr>

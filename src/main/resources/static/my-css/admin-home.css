@@ -15,6 +15,7 @@ tr {
 }
 
 h1{
+    margin-top: 3vh;
     margin-bottom: 5vh;
 }
 
@@ -44,8 +45,23 @@ h1{
 
 .logout {
     background-color: white;
+    text-align: right;
+}
+
+.logout:hover {
+    background-color: lightseagreen;
+    color: white;
 }
 
 .new {
     background-color: lightseagreen;
+}
+
+.new:hover {
+    background-color: white;
+    color: lightseagreen;
+}
+
+.lghtgr:hover {
+    color: lightseagreen;
 }

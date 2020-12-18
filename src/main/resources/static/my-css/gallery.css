@@ -5,10 +5,11 @@ body {
 }
 
 h1 {
+    margin-top: 3vh;
     font-size: 300%;
     font-weight: bold;
-    margin-bottom: 5vh;
-    text-align: center;
+    margin-bottom: 3vh;
+    text-align: left;
 }
 form {
     width: 100%;
@@ -24,12 +25,25 @@ input {
 }
 
 .logout{
+    background-color: #9BA6A9;
+    text-align: center;
+    width: 100%;
+}
+
+.logout:hover {
+    color: #082d42;
     background-color: white;
 }
 
 .home{
+    background-color: #9BA6A9;
+}
+
+.home:hover {
+    color: #082d42;
     background-color: white;
 }
+
 .bg-plus{
     background: url("/img/plus.jpg") center center no-repeat;
     background-size: contain;
@@ -75,7 +89,7 @@ input {
 }
 
 .page-top{
-    margin-top:85px;
+    margin-top:5vh;
 }
 
 
@@ -87,7 +101,10 @@ img.zoom {
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -o-transition: all .3s ease-in-out;
-    -ms-transition: all .3s ease-in-out;
+}
+
+img.zoom:hover {
+    transform: scale(1.2);
 }
 
 
